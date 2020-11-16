@@ -21,7 +21,11 @@
       }
     }
   },
-  "projects": {},
+  "projects": {
+    "google-analytics": {
+      "tags": ["util"]
+    }
+  },
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"

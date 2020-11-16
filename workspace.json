@@ -1,7 +1,52 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "google-analytics": {
+      "projectType": "library",
+      "root": "packages/google-analytics",
+      "sourceRoot": "packages/google-analytics/src",
+      "prefix": "cl",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "packages/google-analytics/tsconfig.lib.json",
+            "project": "packages/google-analytics/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/google-analytics/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/google-analytics/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "packages/google-analytics/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
+  },
+  "defaultProject": "google-analytics",
+  "schematics": {
+    "@nrwl/angular:library": {
+      "strict": true
+    }
   }
 }
