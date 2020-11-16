@@ -11,7 +11,8 @@
           "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "packages/google-analytics/tsconfig.lib.json",
-            "project": "packages/google-analytics/ng-package.json"
+            "project": "packages/google-analytics/ng-package.json",
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "configurations": {
             "production": {
