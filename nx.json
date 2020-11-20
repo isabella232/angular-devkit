@@ -24,6 +24,9 @@
   "projects": {
     "google-analytics": {
       "tags": ["util"]
+    },
+    "demoapp": {
+      "tags": ["app"]
     }
   },
   "workspaceLayout": {
