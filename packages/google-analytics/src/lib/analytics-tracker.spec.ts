@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AnalyticsTracker } from './analytics-tracker';
 import { GoogleAnalyticsAdapter } from './ga';
 import { GoogleAnalyticsModule } from './google-analytics.module';
+import { CustomEventTrack } from './types';
 
 describe('AnalyticsTracker', () => {
   let service: AnalyticsTracker;
@@ -30,5 +31,21 @@ describe('AnalyticsTracker', () => {
     loc.go('/foobar');
 
     expect(gaAdapter.sendPageView).toBeCalledWith('/foobar');
+  });
+
+  it('should track custom event', () => {
+    jest.spyOn(gaAdapter, 'sendEvent');
+
+    service.startTracking();
+
+    const event: CustomEventTrack = {
+      category: 'test',
+      action: 'click',
+      label: 'test clicked',
+    };
+
+    service.captureCustomEvent(event);
+
+    expect(gaAdapter.sendEvent).toBeCalledWith(event);
   });
 });

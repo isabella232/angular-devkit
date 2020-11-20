@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { AnalyticsTracker } from './analytics-tracker';
 import { AnalyticsTrackerConfig } from './config';
 import { GoogleAnalyticsAdapter } from './ga';
+import { EventTracking } from './tracking/event-tracking';
 import { PageTracking } from './tracking/page-tracking';
 
 @NgModule({})
@@ -24,6 +25,7 @@ export class GoogleAnalyticsModule {
           },
         },
         PageTracking,
+        EventTracking,
         AnalyticsTracker,
       ],
     };

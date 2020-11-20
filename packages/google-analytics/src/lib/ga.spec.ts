@@ -15,11 +15,30 @@ describe('GoogleAnalyticsAdapter', () => {
   });
 
   describe('pageview', () => {
-    test('should set page url and send pageview event', () => {
+    test('should set page url and send pageview hit', () => {
       adapter.sendPageView('/foobar');
 
       expect(gaInstance).toHaveBeenNthCalledWith(1, 'set', 'page', '/foobar');
       expect(gaInstance).toHaveBeenNthCalledWith(2, 'send', 'pageview');
+    });
+  });
+
+  describe('event', () => {
+    test('should send event hit', () => {
+      adapter.sendEvent({
+        category: 'fooCat',
+        action: 'fooAction',
+        label: 'fooLabel',
+        value: 100,
+      });
+
+      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', {
+        hitType: 'event',
+        eventCategory: 'fooCat',
+        eventAction: 'fooAction',
+        eventLabel: 'fooLabel',
+        eventValue: 100,
+      });
     });
   });
 });
