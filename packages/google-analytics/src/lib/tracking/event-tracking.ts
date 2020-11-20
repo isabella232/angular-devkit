@@ -10,7 +10,7 @@ export class EventTracking {
     return this.eventsSubject.asObservable();
   }
 
-  pushEvent(event: CustomEventTrack): void {
+  push(event: CustomEventTrack): void {
     this.eventsSubject.next(event);
   }
 }

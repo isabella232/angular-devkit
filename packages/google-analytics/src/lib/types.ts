@@ -8,3 +8,10 @@ export type CustomEventTrack = {
   label?: string;
   value?: number;
 };
+
+export type UserTimingTrack = {
+  category: string;
+  name: string;
+  value: number;
+  label?: string;
+};

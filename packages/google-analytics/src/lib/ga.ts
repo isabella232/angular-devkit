@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CustomEventTrack } from './types';
+import { CustomEventTrack, UserTimingTrack } from './types';
 
 @Injectable()
 export class GoogleAnalyticsAdapter {
@@ -20,6 +20,18 @@ export class GoogleAnalyticsAdapter {
         eventAction: event.action,
         eventLabel: event.label,
         eventValue: event.value,
+      });
+    }
+  }
+
+  sendUserTiming(timing: UserTimingTrack): void {
+    if (this.gaInstance) {
+      this.gaInstance('send', {
+        hitType: 'timing',
+        timingCategory: timing.category,
+        timingVar: timing.name,
+        timingValue: timing.value,
+        timingLabel: timing.label,
       });
     }
   }

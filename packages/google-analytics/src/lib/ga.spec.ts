@@ -41,4 +41,23 @@ describe('GoogleAnalyticsAdapter', () => {
       });
     });
   });
+
+  describe('user timing', () => {
+    test('should send timing hit', () => {
+      adapter.sendUserTiming({
+        category: 'fooCat',
+        name: 'fooVar',
+        value: 100,
+        label: 'fooLabel',
+      });
+
+      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', {
+        hitType: 'timing',
+        timingCategory: 'fooCat',
+        timingVar: 'fooVar',
+        timingValue: 100,
+        timingLabel: 'fooLabel',
+      });
+    });
+  });
 });

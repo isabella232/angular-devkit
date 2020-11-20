@@ -4,6 +4,7 @@ import { AnalyticsTrackerConfig } from './config';
 import { GoogleAnalyticsAdapter } from './ga';
 import { EventTracking } from './tracking/event-tracking';
 import { PageTracking } from './tracking/page-tracking';
+import { UserTimingTracking } from './tracking/user-timing-tracking';
 
 @NgModule({})
 export class GoogleAnalyticsModule {
@@ -26,6 +27,7 @@ export class GoogleAnalyticsModule {
         },
         PageTracking,
         EventTracking,
+        UserTimingTracking,
         AnalyticsTracker,
       ],
     };

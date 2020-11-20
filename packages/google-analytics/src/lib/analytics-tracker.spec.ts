@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AnalyticsTracker } from './analytics-tracker';
 import { GoogleAnalyticsAdapter } from './ga';
 import { GoogleAnalyticsModule } from './google-analytics.module';
-import { CustomEventTrack } from './types';
+import { CustomEventTrack, UserTimingTrack } from './types';
 
 describe('AnalyticsTracker', () => {
   let service: AnalyticsTracker;
@@ -47,5 +47,22 @@ describe('AnalyticsTracker', () => {
     service.captureCustomEvent(event);
 
     expect(gaAdapter.sendEvent).toBeCalledWith(event);
+  });
+
+  it('should track user-timing', () => {
+    jest.spyOn(gaAdapter, 'sendUserTiming');
+
+    service.startTracking();
+
+    const timing: UserTimingTrack = {
+      category: 'test',
+      name: 'click',
+      value: 100,
+      label: 'test timing',
+    };
+
+    service.captureUserTiming(timing);
+
+    expect(gaAdapter.sendUserTiming).toBeCalledWith(timing);
   });
 });
