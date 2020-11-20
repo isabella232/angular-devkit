@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AnalyticsTracker } from '@classi/ngx-google-analytics';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'demoapp';
+  constructor(private readonly analytics: AnalyticsTracker) {
+    this.analytics.startTracking();
+  }
 }

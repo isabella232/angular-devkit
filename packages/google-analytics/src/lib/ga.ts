@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
 import { CustomEventTrack, UserTimingTrack } from './types';
 
-@Injectable()
 export class GoogleAnalyticsAdapter {
   constructor(private readonly gaInstance: UniversalAnalytics.ga | null) {}
 
