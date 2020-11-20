@@ -35,4 +35,10 @@ export class GoogleAnalyticsAdapter {
       });
     }
   }
+
+  setUserId(userId: string | null): void {
+    if (this.gaInstance) {
+      this.gaInstance('set', 'userId', userId ?? undefined);
+    }
+  }
 }

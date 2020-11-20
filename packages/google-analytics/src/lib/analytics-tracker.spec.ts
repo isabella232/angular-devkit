@@ -65,4 +65,20 @@ describe('AnalyticsTracker', () => {
 
     expect(gaAdapter.sendUserTiming).toBeCalledWith(timing);
   });
+
+  it('should be able to set user context', () => {
+    jest.spyOn(gaAdapter, 'setUserId');
+
+    service.setUserContext({ id: 'test' });
+
+    expect(gaAdapter.setUserId).toBeCalledWith({ id: 'test' });
+  });
+
+  it('should be able to clear user context', () => {
+    jest.spyOn(gaAdapter, 'setUserId');
+
+    service.clearUserContext();
+
+    expect(gaAdapter.setUserId).toBeCalledWith(null);
+  });
 });

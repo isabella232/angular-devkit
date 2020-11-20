@@ -60,4 +60,12 @@ describe('GoogleAnalyticsAdapter', () => {
       });
     });
   });
+
+  describe('tracking context', () => {
+    test('is able to set user id', () => {
+      adapter.setUserId('foo');
+
+      expect(gaInstance).toHaveBeenNthCalledWith(1, 'set', 'userId', 'foo');
+    });
+  });
 });

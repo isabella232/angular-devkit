@@ -46,4 +46,12 @@ export class AnalyticsTracker {
   captureUserTiming(timing: UserTimingTrack): void {
     this.userTimingTracking.push(timing);
   }
+
+  setUserContext(user: { id: string }): void {
+    this.gaAdapter.setUserId(user.id);
+  }
+
+  clearUserContext(): void {
+    this.gaAdapter.setUserId(null);
+  }
 }
