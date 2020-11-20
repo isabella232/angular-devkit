@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GoogleAnalyticsModule } from '@classi/ngx-google-analytics';
 
 import { GoogleAnalyticsComponent } from './google-analytics.component';
 
@@ -8,6 +9,7 @@ describe('GoogleAnalyticsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [GoogleAnalyticsModule.forRoot({ disableTracking: true })],
       declarations: [GoogleAnalyticsComponent],
     }).compileComponents();
   });
