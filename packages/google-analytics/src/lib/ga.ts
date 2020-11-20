@@ -14,8 +14,7 @@ export class GoogleAnalyticsAdapter {
 
   sendEvent(event: CustomEventTrack): void {
     if (this.gaInstance) {
-      this.gaInstance('send', {
-        hitType: 'event',
+      this.gaInstance('send', 'event', {
         eventCategory: event.category,
         eventAction: event.action,
         eventLabel: event.label,
@@ -26,8 +25,7 @@ export class GoogleAnalyticsAdapter {
 
   sendUserTiming(timing: UserTimingTrack): void {
     if (this.gaInstance) {
-      this.gaInstance('send', {
-        hitType: 'timing',
+      this.gaInstance('send', 'timing', {
         timingCategory: timing.category,
         timingVar: timing.name,
         timingValue: timing.value,
@@ -39,6 +37,16 @@ export class GoogleAnalyticsAdapter {
   setUserId(userId: string | null): void {
     if (this.gaInstance) {
       this.gaInstance('set', 'userId', userId ?? undefined);
+    }
+  }
+
+  setCustomDimensions(dimensions: Record<string, string>): void {
+    if (this.gaInstance) {
+      for (const key of Object.keys(dimensions)) {
+        if (key.match(/^dimension[0-9]+$/)) {
+          this.gaInstance('set', key, dimensions[key]);
+        }
+      }
     }
   }
 }

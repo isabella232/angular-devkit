@@ -54,4 +54,8 @@ export class AnalyticsTracker {
   clearUserContext(): void {
     this.gaAdapter.setUserId(null);
   }
+
+  setCustomDimensions(dimensions: Record<string, string>): void {
+    this.gaAdapter.setCustomDimensions(dimensions);
+  }
 }

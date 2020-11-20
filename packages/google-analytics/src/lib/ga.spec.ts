@@ -32,8 +32,7 @@ describe('GoogleAnalyticsAdapter', () => {
         value: 100,
       });
 
-      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', {
-        hitType: 'event',
+      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', 'event', {
         eventCategory: 'fooCat',
         eventAction: 'fooAction',
         eventLabel: 'fooLabel',
@@ -51,8 +50,7 @@ describe('GoogleAnalyticsAdapter', () => {
         label: 'fooLabel',
       });
 
-      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', {
-        hitType: 'timing',
+      expect(gaInstance).toHaveBeenNthCalledWith(1, 'send', 'timing', {
         timingCategory: 'fooCat',
         timingVar: 'fooVar',
         timingValue: 100,
@@ -66,6 +64,28 @@ describe('GoogleAnalyticsAdapter', () => {
       adapter.setUserId('foo');
 
       expect(gaInstance).toHaveBeenNthCalledWith(1, 'set', 'userId', 'foo');
+    });
+
+    test('is able to set custom dimensions', () => {
+      adapter.setCustomDimensions({
+        dimension1: 'value1',
+        dimension2: 'value2',
+        invalidFields: 'boo',
+      });
+
+      expect(gaInstance).toHaveBeenCalledTimes(2);
+      expect(gaInstance).toHaveBeenNthCalledWith(
+        1,
+        'set',
+        'dimension1',
+        'value1'
+      );
+      expect(gaInstance).toHaveBeenNthCalledWith(
+        2,
+        'set',
+        'dimension2',
+        'value2'
+      );
     });
   });
 });

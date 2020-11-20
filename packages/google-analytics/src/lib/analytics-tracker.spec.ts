@@ -71,7 +71,7 @@ describe('AnalyticsTracker', () => {
 
     service.setUserContext({ id: 'test' });
 
-    expect(gaAdapter.setUserId).toBeCalledWith({ id: 'test' });
+    expect(gaAdapter.setUserId).toBeCalledWith('test');
   });
 
   it('should be able to clear user context', () => {
@@ -80,5 +80,19 @@ describe('AnalyticsTracker', () => {
     service.clearUserContext();
 
     expect(gaAdapter.setUserId).toBeCalledWith(null);
+  });
+
+  it('should be able to set custom dimensions', () => {
+    jest.spyOn(gaAdapter, 'setCustomDimensions');
+
+    service.setCustomDimensions({
+      dimension1: 'value1',
+      dimension2: 'value2',
+    });
+
+    expect(gaAdapter.setCustomDimensions).toBeCalledWith({
+      dimension1: 'value1',
+      dimension2: 'value2',
+    });
   });
 });
