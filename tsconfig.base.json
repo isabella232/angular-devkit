@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@classi/ngx-google-analytics": ["packages/google-analytics/src/index.ts"]
+      "@classi/ngx-google-analytics": ["projects/google-analytics/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

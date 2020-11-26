@@ -3,33 +3,33 @@
   "projects": {
     "google-analytics": {
       "projectType": "library",
-      "root": "packages/google-analytics",
-      "sourceRoot": "packages/google-analytics/src",
+      "root": "projects/google-analytics",
+      "sourceRoot": "projects/google-analytics/src",
       "prefix": "cl",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
           "options": {
-            "tsConfig": "packages/google-analytics/tsconfig.lib.json",
-            "project": "packages/google-analytics/ng-package.json",
+            "tsConfig": "projects/google-analytics/tsconfig.lib.json",
+            "project": "projects/google-analytics/ng-package.json",
             "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "configurations": {
             "production": {
-              "tsConfig": "packages/google-analytics/tsconfig.lib.prod.json"
+              "tsConfig": "projects/google-analytics/tsconfig.lib.prod.json"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/google-analytics/src/**/*.ts"]
+            "lintFilePatterns": ["projects/google-analytics/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/google-analytics/jest.config.js",
+            "jestConfig": "projects/google-analytics/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -47,32 +47,32 @@
           "style": "scss"
         }
       },
-      "root": "packages/demoapp",
-      "sourceRoot": "packages/demoapp/src",
+      "root": "projects/demoapp",
+      "sourceRoot": "projects/demoapp/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/packages/demoapp",
-            "index": "packages/demoapp/src/index.html",
-            "main": "packages/demoapp/src/main.ts",
-            "polyfills": "packages/demoapp/src/polyfills.ts",
-            "tsConfig": "packages/demoapp/tsconfig.app.json",
+            "outputPath": "dist/projects/demoapp",
+            "index": "projects/demoapp/src/index.html",
+            "main": "projects/demoapp/src/main.ts",
+            "polyfills": "projects/demoapp/src/polyfills.ts",
+            "tsConfig": "projects/demoapp/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "packages/demoapp/src/favicon.ico",
-              "packages/demoapp/src/assets"
+              "projects/demoapp/src/favicon.ico",
+              "projects/demoapp/src/assets"
             ],
-            "styles": ["packages/demoapp/src/styles.scss"],
+            "styles": ["projects/demoapp/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "packages/demoapp/src/environments/environment.ts",
-                  "with": "packages/demoapp/src/environments/environment.prod.ts"
+                  "replace": "projects/demoapp/src/environments/environment.ts",
+                  "with": "projects/demoapp/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -118,13 +118,13 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["packages/demoapp/src/**/*.ts"]
+            "lintFilePatterns": ["projects/demoapp/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/demoapp/jest.config.js",
+            "jestConfig": "projects/demoapp/jest.config.js",
             "passWithNoTests": true
           }
         }
