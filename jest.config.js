@@ -1,3 +1,6 @@
 module.exports = {
-  projects: ['<rootDir>/packages/google-analytics'],
+  projects: [
+    '<rootDir>/packages/google-analytics',
+    '<rootDir>/packages/demoapp',
+  ],
 };
