@@ -1,0 +1,32 @@
+name: publish (latest)
+
+on:
+  push:
+    tags:
+      - google-analytics-v*
+      - test-v*
+
+jobs:
+  publish-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # == region variables
+      - run: echo "::set-output name=result::$(git branch -r --contains ${GITHUB_SHA} --format "%(refname:lstrip=2)" | egrep "main")"
+        id: validBranch
+      - run: echo "::set-output name=result::${GITHUB_REF/refs\/tags\//}"
+        id: targetTag
+      - run: echo "validBranch:${{steps.validBranch.outputs.result==true}}"
+      - run: echo "targetTag:${{steps.targetTag.outputs.result}}"
+      # == endregion
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: yarn
+      - name: google-analytics
+        if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'google-analytics-v') }}
+        # TODO: do publishing
+        run: yarn build google-analytics --prod
+      - name: test
+        if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'test-v') }}
+        run: echo 'test'
