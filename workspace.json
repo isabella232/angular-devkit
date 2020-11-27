@@ -39,7 +39,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx standard-version --dry-run"
+                "command": "npx standard-version"
               }
             ],
             "cwd": "projects/google-analytics",
