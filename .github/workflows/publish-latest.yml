@@ -1,0 +1,28 @@
+name: publish (latest)
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - 'google-analytics-v*'
+      - 'test*'
+
+jobs:
+  publish-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get tag name
+        id: tagName
+        run: echo ::set-output name=result::${GITHUB_REF#refs/tags/}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x 
+      - run: yarn
+      - name: google-analytics
+        if: ${{ startsWith(steps.tagName.outputs.result, 'google-analytics') }}
+        run: yarn build google-analytics --prod
+      - name: test
+        if: ${{ startsWith(steps.tagName.outputs.result, 'test') }}
+        run: echo 'test'
