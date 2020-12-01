@@ -22,10 +22,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@classi'
       - run: yarn
       - name: google-analytics
         if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'google-analytics-v') }}
         run: ./tools/scripts/publish-latest.sh "google-analytics"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
       - name: test
         if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'test-v') }}
         run: echo 'test'

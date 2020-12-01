@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x 
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@classi'
       - run: yarn
       - run: yarn build:libs
       - run: ./tools/scripts/publish-next-all.sh ${GITHUB_SHA}
