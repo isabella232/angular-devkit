@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/classi/angular-devkit/compare/google-analytics-v0.0.2...google-analytics-v0.0.3) (2020-12-01)
+
+
+### Bug Fixes
+
+* **google-analytics:** prepare for release ([#7](https://github.com/classi/angular-devkit/issues/7)) ([a8c3e67](https://github.com/classi/angular-devkit/commit/a8c3e67563f8507d2b1248c1c06735ba6ee3f170))
+
 ### [0.0.2](https://github.com/classi/angular-devkit/compare/google-analytics-v0.0.1...google-analytics-v0.0.2) (2020-12-01)
 
 
