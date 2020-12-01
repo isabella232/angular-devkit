@@ -11,13 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch origin main
       # == region variables
-      - run: echo "::set-output name=result::$(git branch -a --contains ${GITHUB_SHA} --format "%(refname:lstrip=2)" | grep "main")"
-        id: validBranch
       - run: echo "::set-output name=result::${GITHUB_REF/refs\/tags\//}"
         id: targetTag
-      - run: echo "validBranch:${{steps.validBranch.outputs.result==true}}"
       - run: echo "targetTag:${{steps.targetTag.outputs.result}}"
       # == endregion
       - uses: actions/setup-node@v1
@@ -27,10 +23,10 @@ jobs:
           scope: '@classi'
       - run: yarn
       - name: google-analytics
-        if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'google-analytics-v') }}
+        if: ${{ startsWith(steps.targetTag.outputs.result, 'google-analytics-v') }}
         run: ./tools/scripts/publish-latest.sh "google-analytics"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
       - name: test
-        if: ${{ steps.validBranch.outputs.result == true && startsWith(steps.targetTag.outputs.result, 'test-v') }}
+        if: ${{ startsWith(steps.targetTag.outputs.result, 'test-v') }}
         run: echo 'test'
