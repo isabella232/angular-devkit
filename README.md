@@ -3,6 +3,7 @@
 ## Packages
 
 - [`@classi/ngx-google-analytics`](./projects/google-analytics/README.md)
+- [`@classi/ngrx-extensions`](./projects/ngrx-extensions/README.md)
 
 ## Run demoapp
 
