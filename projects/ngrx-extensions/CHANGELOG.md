@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/classi/angular-devkit/compare/ngrx-extensions-v1.0.0...ngrx-extensions-v1.1.0) (2020-12-07)
+
+
+### Features
+
+* **ngrx-extensions:** add createFeatureSlice utility ([#11](https://github.com/classi/angular-devkit/issues/11)) ([5fd3b3a](https://github.com/classi/angular-devkit/commit/5fd3b3a889846509753b37a14725ff5851ea9d2e))
+
 ## 1.0.0 (2020-12-04)
 
 
