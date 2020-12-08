@@ -15,6 +15,49 @@ yarn add @classi/ngrx-extensions
 
 ## APIs
 
+### [store] `createFeatureSlice()`
+
+Creates a feature [`Slice`](https://redux-toolkit.js.org/tutorials/basic-tutorial#introducing-createslice).
+The returned `Slice` object has additional properties: `select` and `initialState`.
+`select` method is the same to returned function by `createFeatureStoreSelector`.
+
+See details in [counter-slice.ts](/projects/demoapp/src/app/ngrx-store/counter-slice.ts)
+
+```ts
+// counter-slice.ts
+import { createFeatureSlice } from '@classi/ngrx-extensions';
+
+export type State = {
+  count: number;
+};
+
+const initialState: State = {
+  count: 0,
+};
+
+export default createFeatureSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment: (state) => ({ count: state.count + 1 }),
+    reset: () => ({ count: 0 }),
+  },
+});
+```
+
+```ts
+import { Store } from '@ngrx/store';
+import * as counterSlice from './counter-slice';
+
+@Component({})
+export class SomeComponent {
+  constructor(private readonly store: Store<{}>) {}
+
+  // Retrieve a scoped state from the store
+  readonly count$ = counterSlice.select(this.store, (state) => state.count);
+}
+```
+
 ### [store] `createFeatureStoreSelector()`
 
 See details in [counter-store.ts](/projects/demoapp/src/app/ngrx-store/counter-store.ts)
