@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/classi/angular-devkit/compare/google-analytics-v0.0.3...google-analytics-v0.1.0) (2020-12-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **google-analytics:** analytics.js (`ga()`) is no longer supported.
+* **google-analytics:** Some APIs are changed.
+
+### Features
+
+* **google-analytics:** use gtag.js ([#14](https://github.com/classi/angular-devkit/issues/14)) ([3e49308](https://github.com/classi/angular-devkit/commit/3e493085e1d6b6eea1571b67b0cfbe98b9920c84))
+
 ### [0.0.3](https://github.com/classi/angular-devkit/compare/google-analytics-v0.0.2...google-analytics-v0.0.3) (2020-12-01)
 
 
